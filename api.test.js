@@ -77,6 +77,24 @@ describe('Teste da API', () => {
     expect(response.status).toBe(200);
     expect(response.data).toBeInstanceOf(Array);
   });
+
+
+  test('GET /api/users retorna a quantidade correta de usuários', async () => {
+    const response = await axios.get('http://localhost:3000/api/users');
+  
+    expect(response.status).toBe(200);
+    expect(response.data).toHaveLength(2); // Substitua o número 3 pela quantidade esperada de usuários
+  });
+
+
+  test('GET /:id retorna o usuário correto', async () => {
+    const userId = 1;
+    const response = await axios.get(`http://localhost:3000/${userId}`);
+  
+    expect(response.status).toBe(200);
+    //expect(response.data).toMatchObject({ id: userId, ... }); // Adicione as propriedades esperadas do usuário
+  });
+
   
 
 });
